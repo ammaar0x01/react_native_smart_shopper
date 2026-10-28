@@ -1,0 +1,21 @@
+{
+    "app_name": "Smart Shopper", 
+    "app_type": "cross-platform; (Web-app and Mobile-app)",
+    
+    "started": "2026-10-26",
+    "updated": "2026-10-28",
+    "status": "work-in-progress",
+    "version": "0.3", 
+
+    "technologies_used": [
+        "react native", 
+        "expo"
+    ], 
+
+    "tools_used": [
+        "vs code",
+        "https://gemini.google.com/",
+        "https://unsplash.com/", 
+        "https://www.pexels.com/"
+    ]
+}
