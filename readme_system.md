@@ -1,8 +1,5 @@
 # System documentation
 
-Shopping List
----
-
 ## Notes
 - This app uses Expo 57 
 - sitemap: http://localhost:8081/_sitemap 
@@ -12,26 +9,19 @@ Shopping List
 
 
 ## Screenshots
+Desktop (Web App)
 
-Here is a quick preview of UI in desktop view: 
-
-| Landing Page | Home View |
+| Wide | Narrow |
 | :---: | :---: |
-| ![Landing Page](/public/screenshots/desktop/landing-page.png) | ![Home View](/public/screenshots/desktop/home.png) |
+| ![Main Page](/public/screenshots/web-app-desktop-wide.png) | ![Main Page](/public/screenshots/web-app-desktop-narrow.png) |
 
-| Search Products | Store Locator |
-| :---: | :---: |
-| ![Search Products](/public/screenshots/desktop/search-products.png) | ![Store Locator](/public/screenshots/desktop/store-locator.png) |
 
-| Shopping Cart | Sell an Item |
+Mobile App
+| Main | Notes |
 | :---: | :---: |
-| ![Shopping Cart](/public/screenshots/desktop/your-shopping-cart.png) | ![Sell an Item](/public/screenshots/desktop/sell-an-item.png) |
+| ![Main Page](/public/screenshots/mobile-app1.jpeg) | ![Notes](/public/screenshots/mobile-app2.jpeg) |
 
-| User Account | |
-| :---: | :---: |
-| ![Account](/public/screenshots/desktop/account.png) | |
 ---
-
 
 ## Naming Conventions 
 

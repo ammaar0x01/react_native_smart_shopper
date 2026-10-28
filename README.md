@@ -14,23 +14,17 @@
 
 
 ## Screenshots
-Here is a quick preview of UI in desktop view: 
-
-| Landing Page | Home View |
+### Desktop (Web App)
+| Wide | Narrow |
 | :---: | :---: |
-| ![Landing Page](/public/screenshots/desktop/landing-page.png) | ![Home View](/public/screenshots/desktop/home.png) |
+| ![Main Page](/public/screenshots/web-app-desktop-wide.png) | ![Main Page](/public/screenshots/web-app-desktop-narrow.png) |
 
-| Search Products | Store Locator |
-| :---: | :---: |
-| ![Search Products](/public/screenshots/desktop/search-products.png) | ![Store Locator](/public/screenshots/desktop/store-locator.png) |
 
-| Shopping Cart | Sell an Item |
+### Mobile App
+| Main | Notes |
 | :---: | :---: |
-| ![Shopping Cart](/public/screenshots/desktop/your-shopping-cart.png) | ![Sell an Item](/public/screenshots/desktop/sell-an-item.png) |
+| ![Main Page](/public/screenshots/mobile-app1.jpeg) | ![Notes](/public/screenshots/mobile-app2.jpeg) |
 
-| User Account | |
-| :---: | :---: |
-| ![Account](/public/screenshots/desktop/account.png) | |
 ---
 
 
@@ -104,28 +98,4 @@ To learn more about developing your project with Expo, look at the following res
 
 - [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
 - [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-
-> Build and export a React native app 
-
-npm install -g eas-cli
-
-eas login
-
-eas build:configure
-
-eas build --platform android
-
-eas build --platform ios
-
-
-Step 5: Export for Web
-
-If you want to deploy your shopping list app as a static website, Expo can bundle your code into HTML, CSS, and JS assets:
-
-    Run the export command:npx expo export
-
-    This creates a dist folder in your project root containing your complete production-ready web app.
-
-    You can deploy this dist folder to any static hosting provider like Vercel, Netlify, or GitHub Pages.
 ---
