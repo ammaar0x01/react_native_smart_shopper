@@ -14,6 +14,7 @@ import {
   Modal 
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { Asset } from 'expo-asset';
 import * as ImagePicker from 'expo-image-picker';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -37,6 +38,10 @@ interface SavedShoppingList {
 }
 
 const STORAGE_KEY = '@shopping_lists_storage';
+
+const DEFAULT_ITEM_IMAGE = Asset.fromModule(
+  require('@/images/d3.jpg'),
+).uri;
 
 const INITIAL_LISTS: SavedShoppingList[] = [
   {
@@ -192,8 +197,8 @@ export default function ShoppingView() {
         // : 'https://images.unsplash.com/photo-1655795451796-390245baacd2?q=80&w=720&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D',
        
         // : 'https://images.pexels.com/photos/102155/pexels-photo-102155.jpeg?_gl=1*xpng7i*_ga*MTI2MzMzOTQyMy4xNzkzMjE3MTI3*_ga_8JE65Q40S6*czE3OTMyMTcxMjckbzEkZzEkdDE3OTMyMTczNTckajQ0JGwwJGgw', 
-        : 'https://images.pexels.com/photos/102155/pexels-photo-102155.jpeg', 
-     
+        : DEFAULT_ITEM_IMAGE,
+
       // --- more default images 
       // https://images.unsplash.com/photo-1632342664765-b067a9e89a44?q=80&w=726&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D
       // https://images.unsplash.com/photo-1650803321876-63010399313e?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D

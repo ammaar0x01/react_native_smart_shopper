@@ -4,7 +4,6 @@ import {
   Text,
   View,
   ScrollView,
-  Pressable,
   Image,
   Platform,
   useWindowDimensions,
@@ -12,9 +11,12 @@ import {
 } from "react-native";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { router } from "expo-router";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import { heroImage } from "@/images/hero.jpeg"
 import { heroImg } from "@/images/hero.webp"
+import { BrandLogo } from "@/components/brand-logo"
+import { HoverPressable } from "@/components/hover-pressable"
 
 
 // import "hero.jpeg" from "@/images";
@@ -23,25 +25,34 @@ import { heroImg } from "@/images/hero.webp"
 
 export default function LandingScreen() {
   const { width } = useWindowDimensions();
+  const insets = useSafeAreaInsets();
   const isDesktop = width >= 768;
 
   return (
-    <ScrollView
-      style={styles.container}
-      contentContainerStyle={styles.scrollContent}
-    >
-      {/* Navbar */}
-      <View style={[styles.navbar, { paddingHorizontal: isDesktop ? 60 : 20 }]}>
+    <View style={styles.container}>
+      {/* Sticky navbar */}
+      <View
+        style={[
+          styles.navbar,
+          {
+            paddingHorizontal: isDesktop ? 60 : 20,
+            paddingTop: 20 + insets.top,
+          },
+        ]}
+      >
         <View style={styles.brandContainer}>
-          {/* <View style={styles.brandIconBox}>
-            <Ionicons name="bag-check-outline" size={24} color="#FFFFFF" />
-          </View> */}
-          <Text style={styles.brandText}>Smart Shopper</Text>
-          {/* <Text style={styles.brandText}>Sharp Shopper</Text> */}
+          <BrandLogo
+            size={34}
+            tintColor="#0B0F0D"
+            textColor="#111827"
+            textStyle={styles.brandText}
+          />
         </View>
 
-        <Pressable
+        <HoverPressable
           style={styles.navLaunchButton}
+          hoverStyle={[styles.buttonHover, styles.navLaunchButtonHover]}
+          pressedStyle={styles.buttonPressed}
           onPress={() => router.replace("/" as any)}
         >
           {/* <Text style={styles.navLaunchButtonText}>Open App</Text> */}
@@ -53,10 +64,14 @@ export default function LandingScreen() {
             color="#FFFFFF"
             style={{ marginLeft: 6 }}
           />
-        </Pressable>
+        </HoverPressable>
       </View>
 
-      {/* Hero Section */}
+      <ScrollView
+        style={styles.scrollView}
+        contentContainerStyle={styles.scrollContent}
+      >
+        {/* Hero Section */}
       <View
         style={[styles.heroSection, { paddingHorizontal: isDesktop ? 60 : 20 }]}
       >
@@ -94,13 +109,11 @@ export default function LandingScreen() {
           </Text> */}
 
 
-          <View style={styles.heroButtonsRow}>
-          
-
-            <Pressable
-              style={ [ styles.navLaunchButton, 
-                { padding: 18, borderRadius: 15,  }
-              ]}
+          <View style={styles.heroActions}>
+            <HoverPressable
+              style={[styles.navLaunchButton, styles.heroButton]}
+              hoverStyle={[styles.buttonHover, styles.navLaunchButtonHover]}
+              pressedStyle={styles.buttonPressed}
               onPress={() => router.replace("/" as any)}
             >
               <Ionicons
@@ -110,15 +123,15 @@ export default function LandingScreen() {
                 style={{ marginRight: 8 }}
               />
               <Text style={styles.navLaunchButtonText}>Use the Web App</Text>
+            </HoverPressable>
 
-            </Pressable>
-          </View>
-<br />
+            <HoverPressable
+              style={[styles.primaryButton, styles.heroButton]}
+              hoverStyle={[styles.buttonHover, styles.primaryButtonHover]}
+              pressedStyle={styles.buttonPressed}
+              // onPress={() => router.replace("/" as any)}
+              onPress={() => Linking.openURL("https://github.com/ammaar0x01/react_native_smart_shopper")}
 
-          <View style={styles.heroButtonsRow}>
-            <Pressable
-              style={styles.primaryButton}
-              onPress={() => router.replace("/" as any)}
             >
               <Ionicons
                 name="rocket-outline"
@@ -127,15 +140,13 @@ export default function LandingScreen() {
                 style={{ marginRight: 8 }}
               />
               <Text style={styles.primaryButtonText}>Download the Mobile App</Text>
+            </HoverPressable>
 
-            </Pressable>
-          </View>
-          <br />
-
-          <View style={styles.heroButtonsRow}>
-            <Pressable
-              style={styles.secondaryButton}
-              onPress={() => Linking.openURL("https://github.com")}
+            <HoverPressable
+              style={[styles.secondaryButton, styles.heroButton]}
+              hoverStyle={[styles.buttonHover, styles.secondaryButtonHover]}
+              pressedStyle={styles.buttonPressed}
+              onPress={() => Linking.openURL("https://github.com/ammaar0x01/react_native_smart_shopper")}
             >
               <Ionicons
                 name="document-text-outline"
@@ -146,7 +157,7 @@ export default function LandingScreen() {
               <Text style={styles.secondaryButtonText}>
                 Download the Source Code
               </Text>
-            </Pressable>
+            </HoverPressable>
           </View>
         </View>
 
@@ -233,7 +244,8 @@ export default function LandingScreen() {
           © 2026 Smart Shopper Built with React Native & Expo.
         </Text>
       </View>
-    </ScrollView>
+      </ScrollView>
+    </View>
   );
 }
 
@@ -244,6 +256,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#FFFFFF",
+  },
+  scrollView: {
+    flex: 1,
   },
   scrollContent: {
     flexGrow: 1,
@@ -258,6 +273,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: "#F3F4F6",
     backgroundColor: "#95f376",
+    zIndex: 10,
   },
   brandContainer: {
     flexDirection: "row",
@@ -281,8 +297,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     backgroundColor: "#111827",
-    paddingHorizontal: 16,
-    paddingVertical: 10,
+    paddingHorizontal: 18,
+    paddingVertical: 12,
     borderRadius: 10,
   },
   navLaunchButtonText: {
@@ -362,9 +378,39 @@ const styles = StyleSheet.create({
     lineHeight: 24,
     marginBottom: 24,
   },
-  heroButtonsRow: {
-    flexDirection: "row",
-    gap: 12,
+  heroActions: {
+    flexDirection: "column",
+    alignItems: "flex-start",
+    gap: 16,
+    marginTop: 8,
+    marginBottom: 12,
+  },
+  heroButton: {
+    paddingHorizontal: 26,
+    paddingVertical: 16,
+    borderRadius: 14,
+  },
+  buttonHover: {
+    transform: [{ translateY: -2 }],
+    shadowColor: "#000000",
+    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 0.16,
+    shadowRadius: 10,
+    elevation: 5,
+  },
+  buttonPressed: {
+    transform: [{ translateY: 0 }, { scale: 0.98 }],
+    opacity: 0.92,
+  },
+  navLaunchButtonHover: {
+    backgroundColor: "#1F2937",
+  },
+  primaryButtonHover: {
+    backgroundColor: "#ABFA8F",
+  },
+  secondaryButtonHover: {
+    backgroundColor: "#E9ECEF",
+    borderColor: "#D1D5DB",
   },
   primaryButton: {
     flexDirection: "row",

@@ -19,6 +19,7 @@ export const stylesLayout = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
+    paddingVertical: 10,
   },
 
   // --- contents of top navbar ---
@@ -32,9 +33,6 @@ export const stylesLayout = StyleSheet.create({
     fontSize: 18,
     fontWeight: "800",
     color: "#FFFFFF",
-    paddingBottom: 10,
-    paddingTop: 20, 
-
   },
   topBarIconsRow: {
     flexDirection: "row",

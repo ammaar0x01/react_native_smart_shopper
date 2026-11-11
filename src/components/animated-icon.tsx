@@ -1,7 +1,7 @@
 import { Image } from 'expo-image';
 import * as SplashScreen from 'expo-splash-screen';
 import { useState } from 'react';
-import { Dimensions, StyleSheet, View } from 'react-native';
+import { Dimensions, StyleSheet, useColorScheme, View } from 'react-native';
 import Animated, { Easing, Keyframe } from 'react-native-reanimated';
 import { scheduleOnRN } from 'react-native-worklets';
 
@@ -11,6 +11,8 @@ const DURATION = 600;
 export function AnimatedSplashOverlay() {
   const [animate, setAnimate] = useState(false);
   const [visible, setVisible] = useState(true);
+  const colorScheme = useColorScheme();
+  const isDark = colorScheme === 'dark';
 
   if (!visible) return null;
 
@@ -33,7 +35,17 @@ export function AnimatedSplashOverlay() {
     },
   });
 
-  const image = <Image style={styles.image} source={require('@/assets/images/expo-logo.png')} />;
+  const image = (
+    <Image
+      style={styles.splashImage}
+      contentFit="contain"
+      source={
+        isDark
+          ? require('@/assets/images/splash-icon-dark.png')
+          : require('@/assets/images/splash-icon-light.png')
+      }
+    />
+  );
 
   return animate ? (
     <Animated.View
@@ -43,7 +55,7 @@ export function AnimatedSplashOverlay() {
           scheduleOnRN(setVisible, false);
         }
       })}
-      style={styles.splashOverlay}>
+      style={[styles.splashOverlay, isDark && styles.splashOverlayDark]}>
       {image}
     </Animated.View>
   ) : (
@@ -53,7 +65,7 @@ export function AnimatedSplashOverlay() {
           setAnimate(true);
         });
       }}
-      style={styles.splashOverlay}>
+      style={[styles.splashOverlay, isDark && styles.splashOverlayDark]}>
       {image}
     </View>
   );
@@ -104,7 +116,12 @@ export function AnimatedIcon() {
 
       <Animated.View entering={keyframe.duration(DURATION)} style={styles.background} />
       <Animated.View style={styles.imageContainer} entering={logoKeyframe.duration(DURATION)}>
-        <Image style={styles.image} source={require('@/assets/images/expo-logo.png')} />
+        <Image
+          style={styles.iconImage}
+          contentFit="contain"
+          tintColor="#0B0F0D"
+          source={require('@/assets/images/logo-mark.png')}
+        />
       </Animated.View>
     </View>
   );
@@ -127,22 +144,29 @@ const styles = StyleSheet.create({
     height: 128,
     zIndex: 100,
   },
-  image: {
-    width: 76,
-    height: 71,
+  iconImage: {
+    width: 78,
+    height: 78,
+  },
+  splashImage: {
+    width: 180,
+    height: 180,
   },
   background: {
     borderRadius: 40,
-    experimental_backgroundImage: `linear-gradient(180deg, #3C9FFE, #0274DF)`,
+    experimental_backgroundImage: `linear-gradient(180deg, #A9FA8D, #7CEB5C)`,
     width: 128,
     height: 128,
     position: 'absolute',
   },
   splashOverlay: {
     ...StyleSheet.absoluteFill,
-    backgroundColor: '#208AEF',
+    backgroundColor: '#95F376',
     alignItems: 'center',
     justifyContent: 'center',
     zIndex: 1000,
+  },
+  splashOverlayDark: {
+    backgroundColor: '#0B0F0D',
   },
 });

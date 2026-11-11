@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <title>Smart Shopper logo mark</title>
+  <defs>
+    <mask id="check">
+      <rect width="1024" height="1024" fill="#fff" />
+      <path
+        d="M392 584 L484 676 L648 506"
+        fill="none"
+        stroke="#000"
+        stroke-width="72"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </mask>
+  </defs>
+
+  <g transform="translate(512 512) scale(1.44) translate(-512 -478)">
+    <g mask="url(#check)" fill="#95F376">
+      <path
+        d="M384 400 V306 A128 130 0 0 1 640 306 V400"
+        fill="none"
+        stroke="#95F376"
+        stroke-width="64"
+      />
+      <rect x="276" y="346" width="472" height="466" rx="104" fill="#95F376" />
+    </g>
+  </g>
+</svg>

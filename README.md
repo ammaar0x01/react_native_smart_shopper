@@ -1,6 +1,6 @@
 # Smart Shopper 
 - Started: 2026-10-26
-- Updated: 2026-10-28
+- Updated: 2026-11-05
 - Version: 0.3
 - Status: work-in-progress
 ---
@@ -89,6 +89,26 @@ Different files have different naming styles
    + themeDefault.styles.ts
 - The '(tabs)' folder in /src/app are for the tabs in the bottom navbar for the mobile app (2-5 tabs)
 ---
+
+
+### Build and export a React native app
+``` 
+npm install -g eas-cli
+
+# You need to have an expo account
+eas login
+
+eas build:configure
+
+# Change build to .apk in eas.json file
+eas build --platform android
+
+# PREVIEW (to output the .apk file)
+eas build --platform android --profile preview 
+
+# You need to have an Apple ID for this option
+eas build --platform ios
+```
 
 
 ## Learn more

@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <title>Smart Shopper favicon</title>
+  <defs>
+    <linearGradient id="lime" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#A9FA8D" />
+      <stop offset="1" stop-color="#7CEB5C" />
+    </linearGradient>
+    <mask id="check">
+      <rect width="1024" height="1024" fill="#fff" />
+      <path
+        d="M392 584 L484 676 L648 506"
+        fill="none"
+        stroke="#000"
+        stroke-width="72"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </mask>
+    <clipPath id="rounded">
+      <rect width="1024" height="1024" rx="205" />
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#rounded)">
+    <rect width="1024" height="1024" fill="url(#lime)" />
+    <g transform="translate(512 550) scale(1.22) translate(-512 -512)">
+      <g mask="url(#check)">
+        <path
+          d="M384 400 V306 A128 130 0 0 1 640 306 V400"
+          fill="none"
+          stroke="#0B0F0D"
+          stroke-width="64"
+        />
+        <rect x="276" y="346" width="472" height="466" rx="104" fill="#0B0F0D" />
+      </g>
+    </g>
+  </g>
+</svg>

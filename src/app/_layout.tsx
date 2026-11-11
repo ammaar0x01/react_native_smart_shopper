@@ -24,6 +24,7 @@ import { Ionicons, MaterialCommunityIcons, Octicons } from "@expo/vector-icons";
 
 import { stylesLayout as styles } from "../_layout.styles";
 import { AnimatedSplashOverlay } from "@/components/animated-icon";
+import { BrandLogo } from "@/components/brand-logo";
 // ----------------------------------
 
 SplashScreen.preventAutoHideAsync();
@@ -111,6 +112,12 @@ export default function Layout() {
   // const [isSearching, setIsSearching] = useState(false);
   // const [searchQuery, setSearchQuery] = useState('');
 
+  // Close the collapsible menu whenever navigation changes, including when the
+  // Smart Shopper logo takes the user back to the landing page.
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [pathname]);
+
   const bottomPadding = isWeb ? 8 : Math.max(insets.bottom, 12);
   const totalBarHeight = 60 + bottomPadding;
 
@@ -154,14 +161,12 @@ export default function Layout() {
           >
             <View style={styles.topBarDefaultContainer}>
               <View>
-                <Text style={styles.brandMain}>Smart Shopper</Text>
-
-                {/* <TouchableOpacity
-                  onPress={() => router.push("/settings" as any)}
-                  style={styles.iconButton}
-                >
-                <Text style={styles.brandMain}>Sharp Shopper</Text>
-                </TouchableOpacity> */}
+                <BrandLogo
+                  size={30}
+                  tintColor="#FFFFFF"
+                  textColor="#FFFFFF"
+                  textStyle={styles.brandMain}
+                />
               </View>
 
               <View style={styles.topBarIconsRow}>
@@ -189,18 +194,19 @@ export default function Layout() {
               zIndex: 50,
             }}
           >
-            {/* <Text style={{ color: "#95f376", fontWeight: "700", fontSize: 18 }}>
-              Sharp Shopper
-            </Text> */}
-
-  <TouchableOpacity
-              onPress={() => router.navigate("/landing")}
+            <TouchableOpacity
+              onPress={() => {
+                setMobileMenuOpen(false);
+                router.navigate("/landing");
+              }}
               style={{ padding: 4 }}
             >
-                     <Text style={{ color: "#95f376", fontWeight: "700", fontSize: 18 }}>
-              Smart Shopper
-            </Text>
-
+              <BrandLogo
+                size={28}
+                tintColor="#95f376"
+                textColor="#95f376"
+                textStyle={{ fontSize: 18, fontWeight: "700" }}
+              />
             </TouchableOpacity>
 
             <TouchableOpacity
@@ -217,7 +223,7 @@ export default function Layout() {
         )}
 
         {/* Web Mobile Dropdown Menu */}
-        {isWebMobile && mobileMenuOpen && (
+        {isWebMobile && mobileMenuOpen && !islandingPage && (
           <View
             style={{
               backgroundColor: "#0a0a0a",
@@ -288,6 +294,18 @@ export default function Layout() {
                   gap: 18,
                 }}
               >
+                <TouchableOpacity
+                  onPress={() => router.push("/landing" as any)}
+                  style={{ padding: 4 }}
+                  accessibilityLabel="Smart Shopper home"
+                >
+                  <BrandLogo
+                    size={36}
+                    tintColor="#95f376"
+                    showWordmark={false}
+                  />
+                </TouchableOpacity>
+
                 {sidebarNavItems.map((item) => (
                   <SidebarIcon
                     key={item.path}
