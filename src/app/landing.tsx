@@ -130,7 +130,7 @@ export default function LandingScreen() {
               hoverStyle={[styles.buttonHover, styles.primaryButtonHover]}
               pressedStyle={styles.buttonPressed}
               // onPress={() => router.replace("/" as any)}
-              onPress={() => Linking.openURL("https://github.com/ammaar0x01/react_native_smart_shopper")}
+              onPress={() => Linking.openURL("https://github.com/ammaar0x01/react_native_smart_shopper/releases/tag/release-1-0-0")}
 
             >
               <Ionicons
