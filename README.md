@@ -1,7 +1,7 @@
 # Smart Shopper 
 - Started: 2026-10-26
-- Updated: 2026-11-05
-- Version: 0.3
+- Updated: 2026-11-11
+- Version: 1.0.0
 - Status: work-in-progress
 ---
 
